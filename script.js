@@ -94,3 +94,18 @@ const qsa = (s, el = document) => [...el.querySelectorAll(s)];
   setHero();
   setBadge();
 })();
+// Stagger reveal (delays automáticos)
+(() => {
+  const groups = [
+    ".cards .reveal",
+    ".testimonials .reveal",
+    ".pricing .reveal",
+    ".trust-grid .trust-card",
+  ];
+
+  groups.forEach(sel => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 70, 280)}ms`;
+    });
+  });
+})();
