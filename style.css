@@ -457,3 +457,164 @@ a{ color:inherit; text-decoration:none; }
   .cards{ grid-template-columns: 1fr; }
   .testimonials{ grid-template-columns: 1fr; }
 }
+/* =========
+   THEME: "Retail premium" (ámbar + magenta suave + noche)
+   Pega esto al FINAL del CSS
+   ========= */
+
+:root{
+  --bg0:#07060a;
+  --bg1:#0b0a14;
+  --ink:#fff7f2;
+  --muted:rgba(255,247,242,.72);
+  --line:rgba(255,255,255,.12);
+
+  /* acentos nuevos */
+  --accent1:#ffb703; /* ámbar */
+  --accent2:#ff4d8d; /* magenta */
+  --accent3:#7c3aed; /* violeta suave */
+}
+
+/* Fondo completo sin cortes + más "premium" */
+body{
+  background:
+    radial-gradient(1100px 680px at 16% 12%, rgba(255,183,3,.16), transparent 55%),
+    radial-gradient(900px 640px at 82% 22%, rgba(255,77,141,.14), transparent 52%),
+    radial-gradient(900px 700px at 50% 85%, rgba(124,58,237,.12), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  background-attachment: fixed;
+}
+
+/* Más “glass” premium en cards */
+.card, .quote, .price-card, .hero-panel{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+  box-shadow: 0 22px 55px rgba(0,0,0,.40);
+}
+
+/* Hero title: degradado cálido elegante */
+.hero h1{
+  background: linear-gradient(180deg, #fff2db, var(--accent1) 55%, #ffd6e7);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+}
+
+/* Chips y pills con acentos */
+.chip{
+  border-color: rgba(255,183,3,.25);
+  background: rgba(255,183,3,.08);
+}
+
+/* Botones: efecto "shine" al hover */
+.btn{
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:-40% -20%;
+  background: linear-gradient(120deg,
+    transparent 0%,
+    rgba(255,255,255,.16) 35%,
+    transparent 70%
+  );
+  transform: translateX(-120%) rotate(10deg);
+  transition: transform .65s cubic-bezier(.2,.8,.2,1);
+}
+.btn:hover::after{
+  transform: translateX(120%) rotate(10deg);
+}
+
+/* Botón principal más llamativo pero serio */
+.btn-primary{
+  border-color: rgba(255,183,3,.45);
+  background: linear-gradient(135deg, rgba(255,183,3,.28), rgba(255,77,141,.18));
+  box-shadow: 0 18px 45px rgba(255,183,3,.10);
+}
+.btn-primary:hover{
+  box-shadow: 0 22px 55px rgba(255,183,3,.16);
+}
+
+/* Resalte para la card highlight */
+.card.highlight{
+  border-color: rgba(255,77,141,.24);
+  background:
+    radial-gradient(900px 420px at 20% 10%, rgba(255,77,141,.14), transparent 55%),
+    rgba(255,255,255,.06);
+}
+
+/* Panel derecho con animación sutil flotante */
+.hero-panel{
+  animation: floatPanel 5.2s ease-in-out infinite;
+}
+@keyframes floatPanel{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-6px); }
+}
+
+/* “Dot” en badge del panel con pulso cálido */
+.dot{
+  background: #19e38a;
+  box-shadow: 0 0 0 0 rgba(25,227,138,.45);
+  animation: pulseDot 1.4s infinite;
+}
+@keyframes pulseDot{
+  0%{ box-shadow: 0 0 0 0 rgba(25,227,138,.45); }
+  70%{ box-shadow: 0 0 0 14px rgba(25,227,138,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(25,227,138,0); }
+}
+
+/* Reveal más “moderno”: con blur suave */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(8px);
+  transition:
+    opacity .75s cubic-bezier(.2,.8,.2,1),
+    transform .75s cubic-bezier(.2,.8,.2,1),
+    filter .75s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Hover más “premium” en cards */
+.card:hover, .quote:hover, .price-card:hover{
+  transform: translateY(-5px);
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,183,3,.22);
+}
+
+/* Enlaces: subrayado animado */
+.nav a{
+  position: relative;
+}
+.nav a::after{
+  content:"";
+  position:absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,183,3,.0), rgba(255,183,3,.8), rgba(255,77,141,.0));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s cubic-bezier(.2,.8,.2,1);
+}
+.nav a:hover::after{
+  transform: scaleX(1);
+}
+
+/* Título del teléfono con nuevo degradado */
+.telefono-destacado{
+  background: linear-gradient(180deg, #fff2db, var(--accent1) 60%, #ffd6e7);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+}
