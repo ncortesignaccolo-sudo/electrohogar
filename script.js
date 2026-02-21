@@ -1,133 +1,88 @@
-// Helpers
-const $ = (s, el=document) => el.querySelector(s);
-const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
-
-/* Close topbar */
-const topbar = $("#topbar");
-const closeTopbar = $("#closeTopbar");
-if (closeTopbar) {
-  closeTopbar.addEventListener("click", () => topbar?.remove());
+// Close demo strip
+const closeDemo = document.getElementById("closeDemo");
+const demoStrip = document.getElementById("demoStrip");
+if (closeDemo && demoStrip) {
+  closeDemo.addEventListener("click", () => {
+    demoStrip.style.display = "none";
+    // Ajusta el header al quitar el strip
+    const header = document.querySelector(".site-header");
+    if (header) header.style.top = "0px";
+  });
 }
 
-/* Mobile menu */
-const header = $("#header");
-const burger = $("#burger");
-const mobileNav = $("#mobileNav");
-
-if (burger && header) {
+// Mobile menu toggle
+const burger = document.getElementById("burger");
+const mobileNav = document.getElementById("mobileNav");
+if (burger && mobileNav) {
   burger.addEventListener("click", () => {
-    const open = header.classList.toggle("open");
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-    mobileNav?.setAttribute("aria-hidden", open ? "false" : "true");
+    const open = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!open));
+    mobileNav.setAttribute("aria-hidden", String(open));
+    mobileNav.classList.toggle("open", !open);
   });
 
-  // close on link click
-  $$("#mobileNav a").forEach(a => {
+  // Close on click
+  mobileNav.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => {
-      header.classList.remove("open");
       burger.setAttribute("aria-expanded", "false");
-      mobileNav?.setAttribute("aria-hidden", "true");
+      mobileNav.setAttribute("aria-hidden", "true");
+      mobileNav.classList.remove("open");
     });
   });
 }
 
-/* Reveal on scroll */
+// Reveal on scroll
+const items = document.querySelectorAll(".reveal");
 const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add("is-visible");
+      io.unobserve(e.target);
+    }
   });
-}, { threshold: 0.14 });
+}, { threshold: 0.12 });
 
-$$(".reveal").forEach(el => io.observe(el));
+items.forEach(el => io.observe(el));
 
-/* Year */
-$("#year").textContent = new Date().getFullYear();
+// (Opcional) Estado simple de horario (demo)
+const estado = document.getElementById("estado");
+const estadoSub = document.getElementById("estadoSub");
+const dot = document.getElementById("dot");
 
-/* Reviews data (puedes editar estas reseñas a tu gusto) */
-const reviews = [
-  { text: "Calidad al mejor precio y lo mejor de todo la atención. Trato humano y servicio estupendo.", meta: "Local Guide · 5★" },
-  { text: "Gran variedad y atención cercana y personalizada. Precios competitivos.", meta: "Cliente · 5★" },
-  { text: "Muy buenos precios y buen trato. Informan bien y te asesoran en todo.", meta: "Cliente · 5★" },
-  { text: "Empresa seria, servicio muy bueno. La aconsejo.", meta: "Cliente · 5★" }
-];
-
-let rIndex = 0;
-const reviewText = $("#reviewText");
-const reviewMeta = $("#reviewMeta");
-function renderReview() {
-  const r = reviews[rIndex];
-  reviewText.textContent = r.text;
-  reviewMeta.textContent = r.meta;
+function setClosed(msg){
+  if (estado) estado.textContent = "Cerrado ahora";
+  if (estadoSub) estadoSub.textContent = msg || "Consulta horarios abajo";
+  if (dot) {
+    dot.style.background = "#ff4d5a";
+    dot.style.boxShadow = "0 0 0 6px rgba(255,77,90,.14), 0 0 18px rgba(255,77,90,.35)";
+  }
 }
-$("#prevReview")?.addEventListener("click", () => {
-  rIndex = (rIndex - 1 + reviews.length) % reviews.length;
-  renderReview();
-});
-$("#nextReview")?.addEventListener("click", () => {
-  rIndex = (rIndex + 1) % reviews.length;
-  renderReview();
-});
-renderReview();
 
-// Auto-rotate
-setInterval(() => {
-  rIndex = (rIndex + 1) % reviews.length;
-  renderReview();
-}, 7000);
+function setOpen(msg){
+  if (estado) estado.textContent = "Abierto ahora";
+  if (estadoSub) estadoSub.textContent = msg || "Disponible";
+  if (dot) {
+    dot.style.background = "#28d17c";
+    dot.style.boxShadow = "0 0 0 6px rgba(40,209,124,.14), 0 0 18px rgba(40,209,124,.35)";
+  }
+}
 
-/* Counter animation (reseñas) */
-const countEl = $("#count");
-const ratingEl = $("#rating");
-ratingEl.textContent = "4,8";
-const targetCount = 23; // cambia a la cifra que quieras mostrar
-let current = 0;
-const counterIO = new IntersectionObserver((entries) => {
-  if (!entries[0].isIntersecting) return;
-  counterIO.disconnect();
-
-  const tick = () => {
-    current += Math.ceil((targetCount - current) / 8);
-    if (current >= targetCount) current = targetCount;
-    countEl.textContent = String(current);
-    if (current < targetCount) requestAnimationFrame(tick);
-  };
-  tick();
-}, { threshold: 0.25 });
-
-if (countEl) counterIO.observe(countEl);
-
-/* Open/Closed status based on schedule (Osuna) */
-function isOpenNow() {
+// Horario demo (ajústalo si quieres)
+(function(){
   const now = new Date();
-  const day = now.getDay(); // 0 Sunday
-  const minutes = now.getHours() * 60 + now.getMinutes();
+  const day = now.getDay(); // 0 domingo
+  const h = now.getHours() + now.getMinutes()/60;
 
-  // Horario:
-  // Sat: 10:00–13:30
-  // Sun: closed
-  // Mon-Fri: 10:00–13:30, 17:00–20:00
-  const inRange = (startH, startM, endH, endM) => {
-    const a = startH * 60 + startM;
-    const b = endH * 60 + endM;
-    return minutes >= a && minutes <= b;
-  };
+  // L-V 10:00–13:30 y 17:00–20:00
+  // Sáb 10:00–13:30
+  // Dom cerrado
+  const isWeek = day >= 1 && day <= 5;
+  const isSat = day === 6;
 
-  if (day === 0) return false; // Sunday
-  if (day === 6) return inRange(10,0,13,30);
+  const inMorning = (h >= 10 && h <= 13.5);
+  const inAfternoon = (h >= 17 && h <= 20);
 
-  // Mon-Fri
-  return inRange(10,0,13,30) || inRange(17,0,20,0);
-}
-
-const statusText = $("#statusText");
-const dot = $("#dot");
-
-function updateStatus() {
-  const open = isOpenNow();
-  if (statusText) statusText.textContent = open ? "Abierto ahora" : "Cerrado ahora";
-  if (dot) dot.style.background = open ? "#22c55e" : "#ef4444";
-  if (dot) dot.style.animation = open ? "pulse 1.7s infinite" : "none";
-  if (!open && dot) dot.style.boxShadow = "0 0 0 0 rgba(239,68,68,.0)";
-}
-updateStatus();
-setInterval(updateStatus, 60000);
+  if (day === 0) return setClosed("Domingo");
+  if (isSat) return (inMorning ? setOpen("Sábado") : setClosed("Sábado"));
+  if (isWeek) return ((inMorning || inAfternoon) ? setOpen("Lunes–Viernes") : setClosed("Fuera de horario"));
+})();
