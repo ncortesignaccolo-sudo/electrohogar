@@ -618,4 +618,58 @@ body{
   background-clip:text;
   color: transparent;
 }
-body { background: red !important; }
+/* ===== THEME OVERRIDE (PEGAR AL FINAL) ===== */
+
+:root{
+  --bg0:#07060a;
+  --bg1:#0b0a14;
+  --ink:#fff7f2;
+  --muted:rgba(255,247,242,.72);
+  --line:rgba(255,255,255,.12);
+}
+
+/* Fondo premium cálido (cambia sí o sí) */
+body{
+  color: var(--ink);
+  background:
+    radial-gradient(1100px 680px at 16% 12%, rgba(255,183,3,.18), transparent 55%),
+    radial-gradient(900px 640px at 82% 22%, rgba(255,77,141,.16), transparent 52%),
+    radial-gradient(900px 700px at 50% 85%, rgba(124,58,237,.14), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1)) !important;
+  background-attachment: fixed;
+}
+
+/* Botón principal más llamativo */
+.btn-primary{
+  border-color: rgba(255,183,3,.55) !important;
+  background: linear-gradient(135deg, rgba(255,183,3,.32), rgba(255,77,141,.18)) !important;
+}
+
+/* Título con degradado nuevo */
+.hero h1{
+  background: linear-gradient(180deg, #fff2db, #ffb703 55%, #ffd6e7) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  color: transparent !important;
+}
+
+/* Reveal con blur (animación visible) */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(8px);
+  transition: opacity .75s cubic-bezier(.2,.8,.2,1),
+              transform .75s cubic-bezier(.2,.8,.2,1),
+              filter .75s cubic-bezier(.2,.8,.2,1) !important;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Hover más evidente */
+.card:hover, .quote:hover{
+  transform: translateY(-6px) !important;
+  border-color: rgba(255,183,3,.22) !important;
+}
