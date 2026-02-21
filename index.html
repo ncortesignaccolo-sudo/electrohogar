@@ -1,1 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>NOMBRE_TIENDA | Electrodomésticos y colchones en Osuna</title>
+  <meta name="description" content="Electrodomésticos y colchones en Osuna. Buen precio, atención cercana, entrega el mismo día e instalación. Dirección: C. San Agustín, 24, 41640 Osuna (Sevilla)." />
+  <meta name="theme-color" content="#071427" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Banner demo -->
+  <div class="proposal-banner" id="proposalBanner" role="region" aria-label="Aviso de demo">
+    <div class="container proposal-banner-inner">
+      <div class="proposal-left">
+        <span class="proposal-pill">Propuesta visual</span>
+        <span class="proposal-text">Demo de cómo podría verse la tienda online (contenido editable).</span>
+      </div>
+      <button class="proposal-close" id="proposalClose" aria-label="Cerrar aviso">×</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">🏪</span>
+        <span class="brand-text">
+          <strong>NOMBRE_TIENDA</strong>
+          <span>Osuna · Sevilla</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#opiniones">Reseñas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn btn-ghost" href="tel:954815750">Llamar</a>
+        <a class="btn btn-primary" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
+          Cómo llegar
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav" aria-label="Menú móvil">
+      <a href="#servicios">Servicios</a>
+      <a href="#opiniones">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="kicker">Electrodomésticos y colchones en Osuna</div>
+          <h1>Buen precio, atención cercana y entrega rápida</h1>
+          <p class="lead">
+            Asesoramiento personalizado, primeras marcas y servicio completo:
+            <strong>entrega</strong>, <strong>instalación</strong> y <strong>retirada</strong> (según producto).
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="tel:954815750">Llamar ahora</a>
+            <a class="btn btn-glass btn-lg" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
+              Ver en Maps
+            </a>
+          </div>
+
+          <div class="chips">
+            <span class="chip">🚚 Entrega el mismo día</span>
+            <span class="chip">🧰 Servicio de instalación</span>
+            <span class="chip">♻️ Reciclaje de pilas</span>
+          </div>
+
+          <div class="trust-grid">
+            <div class="trust-card">
+              <div class="trust-title">Atención top</div>
+              <div class="trust-sub">Cercana y personalizada</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-title">Buenos precios</div>
+              <div class="trust-sub">Calidad al mejor precio</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-title">Entrega e instalación</div>
+              <div class="trust-sub">Te lo llevan y te lo montan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="hero-panel-inner">
+            <div class="panel-badge">
+              <span class="dot"></span>
+              <span id="estado-horario-hero">Comprobando horario…</span>
+            </div>
+
+            <div class="panel-title">Información rápida</div>
+            <div class="panel-info">
+              <div class="info-row">
+                <span class="info-k">Dirección</span>
+                <span class="info-v">C. San Agustín, 24 · 41640 Osuna (Sevilla)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-k">Teléfono</span>
+                <span class="info-v"><a class="link" href="tel:954815750">954 81 57 50</a></span>
+              </div>
+              <div class="info-row">
+                <span class="info-k">Servicios</span>
+                <span class="info-v">Instalación · Entrega · Reciclaje</span>
+              </div>
+            </div>
+
+            <div class="panel-note">
+              <strong>Idea de esta demo:</strong> que el cliente te encuentre en Google, confíe y te llame en 1 clic.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-glow" aria-hidden="true"></div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Servicios</h2>
+          <p>Lo que más valora el cliente: rapidez, confianza y un servicio completo.</p>
+        </div>
+
+        <div class="grid cards">
+          <article class="card reveal">
+            <h3>Entrega el mismo día</h3>
+            <p>Disponibilidad rápida (según stock). Ideal para urgencias del hogar.</p>
+            <ul class="list">
+              <li>Entrega a domicilio</li>
+              <li>Coordinación de horarios</li>
+              <li>Retirada de embalajes (si aplica)</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Instalación</h3>
+            <p>Te lo dejamos listo para usar: montaje, conexión y comprobación.</p>
+            <ul class="list">
+              <li>Lavadoras, lavavajillas, hornos…</li>
+              <li>Configuración básica</li>
+              <li>Consejos de uso</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Asesoramiento</h3>
+            <p>Te recomiendan según lo que necesitas (sin venderte de más).</p>
+            <ul class="list">
+              <li>Relación calidad-precio</li>
+              <li>Marcas y garantías</li>
+              <li>Elección por espacio y consumo</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Variedad y primeras marcas</h3>
+            <p>Electrodomésticos, electrónica y colchones con opciones para cada presupuesto.</p>
+            <ul class="list">
+              <li>Gama económica y premium</li>
+              <li>Stock y pedidos rápidos</li>
+              <li>Atención postventa</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Reciclaje de pilas</h3>
+            <p>Punto de recogida para reciclar pilas de forma responsable.</p>
+            <ul class="list">
+              <li>Deja tus pilas usadas</li>
+              <li>Colaboración medioambiental</li>
+              <li>Servicio al barrio</li>
+            </ul>
+          </article>
+
+          <article class="card highlight reveal">
+            <h3>Contacto fácil</h3>
+            <p>Botones grandes para llamar o llegar en 1 clic desde el móvil.</p>
+            <div class="mini-cta">
+              <a class="btn btn-primary" href="tel:954815750">Llamar</a>
+              <a class="btn btn-ghost" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
+                Cómo llegar
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opiniones -->
+    <section class="section" id="opiniones">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Lo que dicen los clientes</h2>
+          <p>Reseñas reales: destacan el trato, los precios y el servicio.</p>
+        </div>
+
+        <div class="grid testimonials">
+          <figure class="quote reveal">
+            <blockquote>“Calidad al mejor precio y lo mejor la atención. Te llevan a casa tus electrodomésticos.”</blockquote>
+            <figcaption>— Paconjura</figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>“He comprao muchas cositas allí… el agrado y todo estupendo. Buenos precios.”</blockquote>
+            <figcaption>— María José Carvajal Muñoz</figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>“Gran variedad de primeras marcas a precios competitivos. Atención cercana y personalizada.”</blockquote>
+            <figcaption>— Joaquín Arregui Cuevas</figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>“Gran trato humano y unos precios muy ajustados.”</blockquote>
+            <figcaption>— Jorge Perona Puro</figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>“Son geniales… te asesoran en todo. Precios muy económicos.”</blockquote>
+            <figcaption>— Mar E. C</figcaption>
+          </figure>
+
+          <figure class="quote reveal">
+            <blockquote>“Muy buena tienda de electrodomésticos y colchones, precios asequibles.”</blockquote>
+            <figcaption>— Concepción Espinosa Ledesma</figcaption>
+          </figure>
+        </div>
+
+        <div class="center reveal">
+          <a class="btn btn-glass" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
+            Ver en Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Contacto</h2>
+          <p>Dirección, horario y botones para llamar o llegar en segundos.</p>
+        </div>
+
+        <div class="grid-2 reveal">
+          <div class="card">
+            <h3>Llamar o llegar</h3>
+
+            <div class="contact-highlights">
+              <div class="mini-item">✓ Atención cercana</div>
+              <div class="mini-item">✓ Buenos precios</div>
+              <div class="mini-item">✓ Entrega e instalación</div>
+            </div>
+
+            <p class="label">Dirección</p>
+            <p class="muted">
+              C. San Agustín, 24<br />
+              41640 Osuna, Sevilla
+            </p>
+
+            <p class="label">Teléfono</p>
+            <p class="telefono-destacado">
+              <a href="tel:954815750">954 81 57 50</a>
+            </p>
+            <p class="muted small">Pulsa para llamar directamente.</p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="tel:954815750">Llamar</a>
+              <a class="btn btn-ghost" target="_blank" rel="noopener"
+                 href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
+                Cómo llegar
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Horario</h3>
+            <p id="estado-horario" class="estado-horario"></p>
+
+            <div class="hours">
+              <div class="row"><span>Lunes</span><span>10:00–13:30 · 17:00–20:00</span></div>
+              <div class="row"><span>Martes</span><span>10:00–13:30 · 17:00–20:00</span></div>
+              <div class="row"><span>Miércoles</span><span>10:00–13:30 · 17:00–20:00</span></div>
+              <div class="row"><span>Jueves</span><span>10:00–13:30 · 17:00–20:00</span></div>
+              <div class="row"><span>Viernes</span><span>10:00–13:30 · 17:00–20:00</span></div>
+              <div class="row"><span>Sábado</span><span>10:00–13:30</span></div>
+              <div class="row"><span>Domingo</span><span>Cerrado</span></div>
+            </div>
+
+            <div class="map">
+              <p class="muted mapa-texto">Ubicación directa para abrir Maps y llegar sin perderse.</p>
+              <iframe
+                title="Ubicación en Google Maps"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=C.%20San%20Agust%C3%ADn%2024%20Osuna%20Sevilla&output=embed">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>NOMBRE_TIENDA</strong>
+          <p class="muted small">Demo orientada a llamadas, ubicación y confianza. Contenido editable.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#opiniones">Reseñas</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JSON-LD básico -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "NOMBRE_TIENDA",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C. San Agustín, 24",
+      "addressLocality": "Osuna",
+      "addressRegion": "Sevilla",
+      "postalCode": "41640",
+      "addressCountry": "ES"
+    },
+    "telephone": "+34 954 81 57 50"
+  }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
