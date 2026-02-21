@@ -618,3 +618,4 @@ body{
   background-clip:text;
   color: transparent;
 }
+body { background: red !important; }
