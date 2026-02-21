@@ -2,134 +2,143 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>NOMBRE_TIENDA | Electrodomésticos y colchones en Osuna</title>
-  <meta name="description" content="Electrodomésticos y colchones en Osuna. Buen precio, atención cercana, entrega el mismo día e instalación. Dirección: C. San Agustín, 24, 41640 Osuna (Sevilla)." />
-  <meta name="theme-color" content="#071427" />
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nombre Tienda — Osuna</title>
+  <meta name="description" content="Electrodomésticos y colchones en Osuna. Buen precio, atención cercana y entrega rápida." />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Banner demo -->
-  <div class="proposal-banner" id="proposalBanner" role="region" aria-label="Aviso de demo">
-    <div class="container proposal-banner-inner">
-      <div class="proposal-left">
-        <span class="proposal-pill">Propuesta visual</span>
-        <span class="proposal-text">Demo de cómo podría verse la tienda online (contenido editable).</span>
-      </div>
-      <button class="proposal-close" id="proposalClose" aria-label="Cerrar aviso">×</button>
+  <!-- Top notice (opcional demo) -->
+  <div class="demo-strip" id="demoStrip">
+    <div class="container demo-strip__inner">
+      <span class="pill">Propuesta visual</span>
+      <span class="demo-strip__text">Demostración de cómo podría verse tu negocio online (contenido editable).</span>
+      <button class="icon-btn" id="closeDemo" aria-label="Cerrar">✕</button>
     </div>
   </div>
 
   <!-- Header -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <span class="brand-mark">🏪</span>
-        <span class="brand-text">
-          <strong>NOMBRE_TIENDA</strong>
-          <span>Osuna · Sevilla</span>
+      <a class="brand" href="#top">
+        <span class="brand__icon">🏬</span>
+        <span class="brand__text">
+          <strong>NOMBRE TIENDA</strong>
+          <small>Osuna · Sevilla</small>
         </span>
       </a>
 
-      <nav class="nav" aria-label="Navegación principal">
+      <nav class="nav" id="nav">
         <a href="#servicios">Servicios</a>
-        <a href="#opiniones">Reseñas</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#tarifas">Tarifas</a>
         <a href="#contacto">Contacto</a>
       </nav>
 
       <div class="header-cta">
         <a class="btn btn-ghost" href="tel:954815750">Llamar</a>
-        <a class="btn btn-primary" target="_blank" rel="noopener"
+        <a class="btn btn-main" target="_blank" rel="noopener"
            href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
           Cómo llegar
         </a>
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
       </div>
     </div>
 
-    <div class="mobile-nav" id="mobileNav" aria-label="Menú móvil">
+    <!-- Mobile menu -->
+    <div class="container mobile-nav" id="mobileNav" aria-hidden="true">
       <a href="#servicios">Servicios</a>
-      <a href="#opiniones">Reseñas</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#tarifas">Tarifas</a>
       <a href="#contacto">Contacto</a>
     </div>
   </header>
 
+  <!-- Hero -->
   <main>
-    <!-- Hero -->
-    <section class="hero" id="inicio">
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <div class="kicker">Electrodomésticos y colchones en Osuna</div>
-          <h1>Buen precio, atención cercana y entrega rápida</h1>
+          <div class="tagline">
+            <span class="tag">Electrodomésticos y colchones</span>
+            <span class="tag tag--soft">Entrega y asesoramiento</span>
+          </div>
+
+          <h1>
+            Buen precio, atención cercana<br />
+            y entrega rápida
+          </h1>
+
           <p class="lead">
             Asesoramiento personalizado, primeras marcas y servicio completo:
-            <strong>entrega</strong>, <strong>instalación</strong> y <strong>retirada</strong> (según producto).
+            <strong>entrega</strong>, <strong>instalación</strong> y retirada (según producto).
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="tel:954815750">Llamar ahora</a>
-            <a class="btn btn-glass btn-lg" target="_blank" rel="noopener"
+            <a class="btn btn-main" href="tel:954815750">Llamar ahora</a>
+            <a class="btn btn-ghost" target="_blank" rel="noopener"
                href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
               Ver en Maps
             </a>
           </div>
 
-          <div class="chips">
-            <span class="chip">🚚 Entrega el mismo día</span>
-            <span class="chip">🧰 Servicio de instalación</span>
-            <span class="chip">♻️ Reciclaje de pilas</span>
-          </div>
-
-          <div class="trust-grid">
-            <div class="trust-card">
-              <div class="trust-title">Atención top</div>
-              <div class="trust-sub">Cercana y personalizada</div>
-            </div>
-            <div class="trust-card">
-              <div class="trust-title">Buenos precios</div>
-              <div class="trust-sub">Calidad al mejor precio</div>
-            </div>
-            <div class="trust-card">
-              <div class="trust-title">Entrega e instalación</div>
-              <div class="trust-sub">Te lo llevan y te lo montan</div>
-            </div>
+          <div class="mini-badges">
+            <span class="mini">🚚 Entrega el mismo día</span>
+            <span class="mini">🛠️ Servicio de instalación</span>
+            <span class="mini">♻️ Reciclaje de pilas</span>
           </div>
         </div>
 
-        <div class="hero-panel reveal">
-          <div class="hero-panel-inner">
-            <div class="panel-badge">
-              <span class="dot"></span>
-              <span id="estado-horario-hero">Comprobando horario…</span>
-            </div>
+        <aside class="hero-card reveal">
+          <div class="status">
+            <span class="dot" id="dot"></span>
+            <strong id="estado">Abierto hoy</strong>
+            <span class="muted" id="estadoSub">Consulta horarios abajo</span>
+          </div>
 
-            <div class="panel-title">Información rápida</div>
-            <div class="panel-info">
-              <div class="info-row">
-                <span class="info-k">Dirección</span>
-                <span class="info-v">C. San Agustín, 24 · 41640 Osuna (Sevilla)</span>
-              </div>
-              <div class="info-row">
-                <span class="info-k">Teléfono</span>
-                <span class="info-v"><a class="link" href="tel:954815750">954 81 57 50</a></span>
-              </div>
-              <div class="info-row">
-                <span class="info-k">Servicios</span>
-                <span class="info-v">Instalación · Entrega · Reciclaje</span>
-              </div>
+          <div class="info-grid">
+            <div class="info-row">
+              <span class="k">Dirección</span>
+              <span class="v">C. San Agustín, 24 · 41640 Osuna (Sevilla)</span>
             </div>
-
-            <div class="panel-note">
-              <strong>Idea de esta demo:</strong> que el cliente te encuentre en Google, confíe y te llame en 1 clic.
+            <div class="info-row">
+              <span class="k">Teléfono</span>
+              <a class="v link" href="tel:954815750">954 81 57 50</a>
+            </div>
+            <div class="info-row">
+              <span class="k">Lo que más piden</span>
+              <span class="v">Electrodomésticos · Colchones · Entrega</span>
             </div>
           </div>
-        </div>
+
+          <div class="quote">
+            <strong>Idea:</strong> que te encuentren en Google, confíen y te llamen en 1 clic.
+          </div>
+
+          <div class="hero-card-actions">
+            <a class="btn btn-main btn-wide" href="#contacto">Quiero info</a>
+            <a class="btn btn-ghost btn-wide" href="#tarifas">Ver opciones</a>
+          </div>
+        </aside>
       </div>
 
-      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-stats reveal">
+        <div class="stat">
+          <div class="stat__t">Atención top</div>
+          <div class="stat__s">Trato cercano y asesoramiento</div>
+        </div>
+        <div class="stat">
+          <div class="stat__t">Precios competitivos</div>
+          <div class="stat__s">Calidad al mejor precio</div>
+        </div>
+        <div class="stat">
+          <div class="stat__t">Servicio completo</div>
+          <div class="stat__s">Entrega + instalación (según producto)</div>
+        </div>
+      </div>
     </section>
 
     <!-- Servicios -->
@@ -137,225 +146,170 @@
       <div class="container">
         <div class="section-head reveal">
           <h2>Servicios</h2>
-          <p>Lo que más valora el cliente: rapidez, confianza y un servicio completo.</p>
+          <p class="muted">Para que el cliente entienda en 10 segundos qué puede comprar y qué servicio recibe.</p>
         </div>
 
-        <div class="grid cards">
+        <div class="cards-3">
           <article class="card reveal">
-            <h3>Entrega el mismo día</h3>
-            <p>Disponibilidad rápida (según stock). Ideal para urgencias del hogar.</p>
+            <h3>Electrodomésticos</h3>
+            <p class="muted">Primeras marcas, asesoramiento y opciones para todos los presupuestos.</p>
             <ul class="list">
-              <li>Entrega a domicilio</li>
-              <li>Coordinación de horarios</li>
-              <li>Retirada de embalajes (si aplica)</li>
+              <li>Lavadoras, frigoríficos, hornos…</li>
+              <li>Asesoramiento para elegir bien</li>
+              <li>Garantía y seguimiento</li>
             </ul>
           </article>
 
           <article class="card reveal">
-            <h3>Instalación</h3>
-            <p>Te lo dejamos listo para usar: montaje, conexión y comprobación.</p>
+            <h3>Colchones y descanso</h3>
+            <p class="muted">Opciones de descanso con buena relación calidad-precio.</p>
             <ul class="list">
-              <li>Lavadoras, lavavajillas, hornos…</li>
-              <li>Configuración básica</li>
-              <li>Consejos de uso</li>
+              <li>Colchones, bases y complementos</li>
+              <li>Recomendación según uso</li>
+              <li>Entrega y montaje (según producto)</li>
             </ul>
           </article>
 
           <article class="card reveal">
-            <h3>Asesoramiento</h3>
-            <p>Te recomiendan según lo que necesitas (sin venderte de más).</p>
+            <h3>Entrega e instalación</h3>
+            <p class="muted">Servicio práctico para que no tengas que preocuparte.</p>
             <ul class="list">
-              <li>Relación calidad-precio</li>
-              <li>Marcas y garantías</li>
-              <li>Elección por espacio y consumo</li>
+              <li>Entrega el mismo día (cuando sea posible)</li>
+              <li>Instalación (según producto)</li>
+              <li>Retirada del antiguo (si aplica)</li>
             </ul>
-          </article>
-
-          <article class="card reveal">
-            <h3>Variedad y primeras marcas</h3>
-            <p>Electrodomésticos, electrónica y colchones con opciones para cada presupuesto.</p>
-            <ul class="list">
-              <li>Gama económica y premium</li>
-              <li>Stock y pedidos rápidos</li>
-              <li>Atención postventa</li>
-            </ul>
-          </article>
-
-          <article class="card reveal">
-            <h3>Reciclaje de pilas</h3>
-            <p>Punto de recogida para reciclar pilas de forma responsable.</p>
-            <ul class="list">
-              <li>Deja tus pilas usadas</li>
-              <li>Colaboración medioambiental</li>
-              <li>Servicio al barrio</li>
-            </ul>
-          </article>
-
-          <article class="card highlight reveal">
-            <h3>Contacto fácil</h3>
-            <p>Botones grandes para llamar o llegar en 1 clic desde el móvil.</p>
-            <div class="mini-cta">
-              <a class="btn btn-primary" href="tel:954815750">Llamar</a>
-              <a class="btn btn-ghost" target="_blank" rel="noopener"
-                 href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
-                Cómo llegar
-              </a>
-            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Opiniones -->
-    <section class="section" id="opiniones">
+    <!-- Reseñas -->
+    <section class="section section--alt" id="resenas">
       <div class="container">
         <div class="section-head reveal">
-          <h2>Lo que dicen los clientes</h2>
-          <p>Reseñas reales: destacan el trato, los precios y el servicio.</p>
+          <h2>Reseñas</h2>
+          <p class="muted">Prueba social: la gente compra cuando ve confianza real.</p>
         </div>
 
-        <div class="grid testimonials">
-          <figure class="quote reveal">
-            <blockquote>“Calidad al mejor precio y lo mejor la atención. Te llevan a casa tus electrodomésticos.”</blockquote>
-            <figcaption>— Paconjura</figcaption>
-          </figure>
+        <div class="reviews">
+          <article class="review reveal">
+            <div class="review__top">
+              <strong>Paconjura</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“Calidad al mejor precio y lo mejor de todo la atención… te llevan a casa tus electrodomésticos.”</p>
+          </article>
 
-          <figure class="quote reveal">
-            <blockquote>“He comprao muchas cositas allí… el agrado y todo estupendo. Buenos precios.”</blockquote>
-            <figcaption>— María José Carvajal Muñoz</figcaption>
-          </figure>
+          <article class="review reveal">
+            <div class="review__top">
+              <strong>Concepción Espinosa</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“Muy buena tienda de electrodomésticos y colchones, precios asequibles.”</p>
+          </article>
 
-          <figure class="quote reveal">
-            <blockquote>“Gran variedad de primeras marcas a precios competitivos. Atención cercana y personalizada.”</blockquote>
-            <figcaption>— Joaquín Arregui Cuevas</figcaption>
-          </figure>
+          <article class="review reveal">
+            <div class="review__top">
+              <strong>Joaquín Arregui</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“Gran variedad… precios competitivos. Total garantía y atención cercana y personalizada.”</p>
+          </article>
 
-          <figure class="quote reveal">
-            <blockquote>“Gran trato humano y unos precios muy ajustados.”</blockquote>
-            <figcaption>— Jorge Perona Puro</figcaption>
-          </figure>
+          <article class="review reveal">
+            <div class="review__top">
+              <strong>Mar E. C</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“Precios muy económicos y te asesoran en todo.”</p>
+          </article>
 
-          <figure class="quote reveal">
-            <blockquote>“Son geniales… te asesoran en todo. Precios muy económicos.”</blockquote>
-            <figcaption>— Mar E. C</figcaption>
-          </figure>
+          <article class="review reveal">
+            <div class="review__top">
+              <strong>Manuel Ortiz</strong>
+              <span class="stars">★☆☆☆☆</span>
+            </div>
+            <p>“No han respondido a la garantía.”</p>
+            <p class="muted small">Consejo: responder públicamente y ofrecer solución mejora la confianza.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <figure class="quote reveal">
-            <blockquote>“Muy buena tienda de electrodomésticos y colchones, precios asequibles.”</blockquote>
-            <figcaption>— Concepción Espinosa Ledesma</figcaption>
-          </figure>
+    <!-- Tarifas -->
+    <section class="section" id="tarifas">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Tarifas</h2>
+          <p class="muted">Si quieres añadir precios, mejor hacerlo claro y simple (sin letra pequeña).</p>
         </div>
 
-        <div class="center reveal">
-          <a class="btn btn-glass" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
-            Ver en Google Maps
-          </a>
+        <div class="pricing">
+          <article class="price-card reveal">
+            <h3>Básico</h3>
+            <p class="price-sub muted">Para una presentación clara</p>
+            <div class="price">Catálogo básico</div>
+            <ul class="list">
+              <li>Secciones principales</li>
+              <li>Botones llamar / mapas</li>
+              <li>Reseñas destacadas</li>
+            </ul>
+          </article>
+
+          <article class="price-card featured reveal">
+            <div class="badge">Recomendado</div>
+            <h3>Profesional</h3>
+            <p class="price-sub muted">Para aparecer mejor en Google</p>
+            <div class="price">SEO local</div>
+            <ul class="list">
+              <li>Textos orientados a búsquedas</li>
+              <li>Estructura para conversión</li>
+              <li>Optimización Google Business</li>
+            </ul>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Avanzado</h3>
+            <p class="price-sub muted">Para vender más y medir</p>
+            <div class="price">Formulario + métricas</div>
+            <ul class="list">
+              <li>Formulario presupuestos</li>
+              <li>Tracking básico</li>
+              <li>Mejoras continuas</li>
+            </ul>
+          </article>
         </div>
+
+        <p class="muted small reveal">
+          * Esto es demo: los “packs” son opcionales. Puedes quitarlos si prefieres.
+        </p>
       </div>
     </section>
 
     <!-- Contacto -->
-    <section class="section" id="contacto">
+    <section class="section section--alt" id="contacto">
       <div class="container">
-        <div class="section-head reveal">
-          <h2>Contacto</h2>
-          <p>Dirección, horario y botones para llamar o llegar en segundos.</p>
-        </div>
-
-        <div class="grid-2 reveal">
-          <div class="card">
-            <h3>Llamar o llegar</h3>
-
-            <div class="contact-highlights">
-              <div class="mini-item">✓ Atención cercana</div>
-              <div class="mini-item">✓ Buenos precios</div>
-              <div class="mini-item">✓ Entrega e instalación</div>
-            </div>
-
-            <p class="label">Dirección</p>
-            <p class="muted">
-              C. San Agustín, 24<br />
-              41640 Osuna, Sevilla
-            </p>
-
-            <p class="label">Teléfono</p>
-            <p class="telefono-destacado">
-              <a href="tel:954815750">954 81 57 50</a>
-            </p>
-            <p class="muted small">Pulsa para llamar directamente.</p>
-
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="tel:954815750">Llamar</a>
-              <a class="btn btn-ghost" target="_blank" rel="noopener"
-                 href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
-                Cómo llegar
-              </a>
-            </div>
+        <div class="cta reveal">
+          <div>
+            <h2>¿Lo comentamos?</h2>
+            <p class="muted">Te enseño cómo quedaría con tus productos/servicios reales y el estilo de tu marca.</p>
           </div>
-
-          <div class="card">
-            <h3>Horario</h3>
-            <p id="estado-horario" class="estado-horario"></p>
-
-            <div class="hours">
-              <div class="row"><span>Lunes</span><span>10:00–13:30 · 17:00–20:00</span></div>
-              <div class="row"><span>Martes</span><span>10:00–13:30 · 17:00–20:00</span></div>
-              <div class="row"><span>Miércoles</span><span>10:00–13:30 · 17:00–20:00</span></div>
-              <div class="row"><span>Jueves</span><span>10:00–13:30 · 17:00–20:00</span></div>
-              <div class="row"><span>Viernes</span><span>10:00–13:30 · 17:00–20:00</span></div>
-              <div class="row"><span>Sábado</span><span>10:00–13:30</span></div>
-              <div class="row"><span>Domingo</span><span>Cerrado</span></div>
-            </div>
-
-            <div class="map">
-              <p class="muted mapa-texto">Ubicación directa para abrir Maps y llegar sin perderse.</p>
-              <iframe
-                title="Ubicación en Google Maps"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=C.%20San%20Agust%C3%ADn%2024%20Osuna%20Sevilla&output=embed">
-              </iframe>
-            </div>
+          <div class="cta-actions">
+            <a class="btn btn-main" href="tel:954815750">Llamar</a>
+            <a class="btn btn-ghost" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/search/?api=1&query=C.%20San%20Agust%C3%ADn%2C%2024%2C%2041640%20Osuna%2C%20Sevilla">
+              Cómo llegar
+            </a>
           </div>
         </div>
+
+        <footer class="footer muted small">
+          <span>© Demo · Contenido editable</span>
+          <span>Hecho para GitHub Pages</span>
+        </footer>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>
-          <strong>NOMBRE_TIENDA</strong>
-          <p class="muted small">Demo orientada a llamadas, ubicación y confianza. Contenido editable.</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="#inicio">Inicio</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#opiniones">Reseñas</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </div>
-    </footer>
   </main>
-
-  <!-- JSON-LD básico -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "NOMBRE_TIENDA",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "C. San Agustín, 24",
-      "addressLocality": "Osuna",
-      "addressRegion": "Sevilla",
-      "postalCode": "41640",
-      "addressCountry": "ES"
-    },
-    "telephone": "+34 954 81 57 50"
-  }
-  </script>
 
   <script src="script.js"></script>
 </body>
