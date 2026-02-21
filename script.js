@@ -1,111 +1,133 @@
-const qs = (s, el = document) => el.querySelector(s);
-const qsa = (s, el = document) => [...el.querySelectorAll(s)];
+// Helpers
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
 
-// Close demo banner
-(() => {
-  const banner = qs("#proposalBanner");
-  const close = qs("#proposalClose");
-  if (!banner || !close) return;
+/* Close topbar */
+const topbar = $("#topbar");
+const closeTopbar = $("#closeTopbar");
+if (closeTopbar) {
+  closeTopbar.addEventListener("click", () => topbar?.remove());
+}
 
-  const key = "demo_banner_closed_osuna";
-  if (localStorage.getItem(key) === "1") {
-    banner.style.display = "none";
-    return;
-  }
+/* Mobile menu */
+const header = $("#header");
+const burger = $("#burger");
+const mobileNav = $("#mobileNav");
 
-  close.addEventListener("click", () => {
-    banner.style.display = "none";
-    localStorage.setItem(key, "1");
-  });
-})();
-
-// Mobile nav toggle
-(() => {
-  const btn = qs("#navToggle");
-  const nav = qs("#mobileNav");
-  if (!btn || !nav) return;
-
-  btn.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
+if (burger && header) {
+  burger.addEventListener("click", () => {
+    const open = header.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    mobileNav?.setAttribute("aria-hidden", open ? "false" : "true");
   });
 
-  qsa("#mobileNav a").forEach(a => {
+  // close on link click
+  $$("#mobileNav a").forEach(a => {
     a.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      btn.setAttribute("aria-expanded", "false");
+      header.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+      mobileNav?.setAttribute("aria-hidden", "true");
     });
   });
-})();
+}
 
-// Reveal on scroll
-(() => {
-  const items = qsa(".reveal");
-  if (!items.length) return;
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("show");
+  });
+}, { threshold: 0.14 });
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("is-visible");
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
+$$(".reveal").forEach(el => io.observe(el));
 
-  items.forEach(el => io.observe(el));
-})();
+/* Year */
+$("#year").textContent = new Date().getFullYear();
 
-// Horario: L-V 10:00–13:30, 17:00–20:00 | S 10:00–13:30 | D cerrado
-(() => {
-  const el = qs("#estado-horario");
-  const elHero = qs("#estado-horario-hero");
+/* Reviews data (puedes editar estas reseñas a tu gusto) */
+const reviews = [
+  { text: "Calidad al mejor precio y lo mejor de todo la atención. Trato humano y servicio estupendo.", meta: "Local Guide · 5★" },
+  { text: "Gran variedad y atención cercana y personalizada. Precios competitivos.", meta: "Cliente · 5★" },
+  { text: "Muy buenos precios y buen trato. Informan bien y te asesoran en todo.", meta: "Cliente · 5★" },
+  { text: "Empresa seria, servicio muy bueno. La aconsejo.", meta: "Cliente · 5★" }
+];
+
+let rIndex = 0;
+const reviewText = $("#reviewText");
+const reviewMeta = $("#reviewMeta");
+function renderReview() {
+  const r = reviews[rIndex];
+  reviewText.textContent = r.text;
+  reviewMeta.textContent = r.meta;
+}
+$("#prevReview")?.addEventListener("click", () => {
+  rIndex = (rIndex - 1 + reviews.length) % reviews.length;
+  renderReview();
+});
+$("#nextReview")?.addEventListener("click", () => {
+  rIndex = (rIndex + 1) % reviews.length;
+  renderReview();
+});
+renderReview();
+
+// Auto-rotate
+setInterval(() => {
+  rIndex = (rIndex + 1) % reviews.length;
+  renderReview();
+}, 7000);
+
+/* Counter animation (reseñas) */
+const countEl = $("#count");
+const ratingEl = $("#rating");
+ratingEl.textContent = "4,8";
+const targetCount = 23; // cambia a la cifra que quieras mostrar
+let current = 0;
+const counterIO = new IntersectionObserver((entries) => {
+  if (!entries[0].isIntersecting) return;
+  counterIO.disconnect();
+
+  const tick = () => {
+    current += Math.ceil((targetCount - current) / 8);
+    if (current >= targetCount) current = targetCount;
+    countEl.textContent = String(current);
+    if (current < targetCount) requestAnimationFrame(tick);
+  };
+  tick();
+}, { threshold: 0.25 });
+
+if (countEl) counterIO.observe(countEl);
+
+/* Open/Closed status based on schedule (Osuna) */
+function isOpenNow() {
   const now = new Date();
-
-  const day = now.getDay(); // 0 domingo
+  const day = now.getDay(); // 0 Sunday
   const minutes = now.getHours() * 60 + now.getMinutes();
-  const inRange = (m, a, b) => m >= a && m <= b;
 
-  const LV_1 = [10 * 60, 13 * 60 + 30];
-  const LV_2 = [17 * 60, 20 * 60];
-  const SA = [10 * 60, 13 * 60 + 30];
-
-  let abierto = false;
-
-  if (day >= 1 && day <= 5) {
-    abierto = inRange(minutes, LV_1[0], LV_1[1]) || inRange(minutes, LV_2[0], LV_2[1]);
-  } else if (day === 6) {
-    abierto = inRange(minutes, SA[0], SA[1]);
-  } else {
-    abierto = false;
-  }
-
-  const setHero = () => {
-    if (!elHero) return;
-    elHero.textContent = abierto ? "Abierto ahora" : "Cerrado ahora";
+  // Horario:
+  // Sat: 10:00–13:30
+  // Sun: closed
+  // Mon-Fri: 10:00–13:30, 17:00–20:00
+  const inRange = (startH, startM, endH, endM) => {
+    const a = startH * 60 + startM;
+    const b = endH * 60 + endM;
+    return minutes >= a && minutes <= b;
   };
 
-  const setBadge = () => {
-    if (!el) return;
-    el.innerHTML = `<span class="status-dot"></span>${abierto ? "Abierto ahora" : "Cerrado ahora"}`;
-    el.classList.toggle("abierto", abierto);
-    el.classList.toggle("cerrado", !abierto);
-  };
+  if (day === 0) return false; // Sunday
+  if (day === 6) return inRange(10,0,13,30);
 
-  setHero();
-  setBadge();
-})();
-// Stagger reveal (delays automáticos)
-(() => {
-  const groups = [
-    ".cards .reveal",
-    ".testimonials .reveal",
-    ".pricing .reveal",
-    ".trust-grid .trust-card",
-  ];
+  // Mon-Fri
+  return inRange(10,0,13,30) || inRange(17,0,20,0);
+}
 
-  groups.forEach(sel => {
-    document.querySelectorAll(sel).forEach((el, i) => {
-      el.style.transitionDelay = `${Math.min(i * 70, 280)}ms`;
-    });
-  });
-})();
+const statusText = $("#statusText");
+const dot = $("#dot");
+
+function updateStatus() {
+  const open = isOpenNow();
+  if (statusText) statusText.textContent = open ? "Abierto ahora" : "Cerrado ahora";
+  if (dot) dot.style.background = open ? "#22c55e" : "#ef4444";
+  if (dot) dot.style.animation = open ? "pulse 1.7s infinite" : "none";
+  if (!open && dot) dot.style.boxShadow = "0 0 0 0 rgba(239,68,68,.0)";
+}
+updateStatus();
+setInterval(updateStatus, 60000);
