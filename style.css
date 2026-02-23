@@ -365,3 +365,45 @@ a{color:inherit; text-decoration:none}
   .site-header{top: 0} /* si quitas el demo strip */
   .demo-strip{position:relative}
 }
+/* Info panel rows (Lo que más piden, Dirección, Teléfono...) */
+.info-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.info-item:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.16);
+}
+
+.info-label{
+  font-weight:700;
+  opacity:.85;
+  min-width: 130px;
+}
+
+.info-value{
+  text-align:right;
+  font-weight:600;
+  opacity:.95;
+}
+
+@media (max-width: 720px){
+  .info-item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .info-value{
+    text-align:left;
+  }
+}
