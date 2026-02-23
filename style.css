@@ -422,3 +422,26 @@ a{color:inherit; text-decoration:none}
   color: #ffffff;
   font-weight: 600;
 }
+/* Horario: texto naranja con brillo */
+.hrow-mini span{
+  color: rgba(255, 210, 160, .95);
+}
+
+.hrow-mini span:last-child{
+  color: #ff9a3c;                 /* naranja principal */
+  text-shadow:
+    0 0 10px rgba(255, 154, 60, .35),
+    0 0 22px rgba(255, 154, 60, .20);
+  font-weight: 700;
+}
+
+/* extra: separadores y alineación bonita */
+.hrow-mini{
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.hrow-mini span:last-child{
+  letter-spacing: .2px;
+}
